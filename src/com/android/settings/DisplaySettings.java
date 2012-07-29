@@ -52,14 +52,25 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
 
+    /* Begin AllianceMOD Customizations */
+
+    private static final String KEY_STATUSBAR_BATTERYICON = "adamod_statusbar_battery_icon";
+
+    /* End AllianceMOD Customizations */
+
     private CheckBoxPreference mAccelerometer;
     private ListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
+    private ListPreference mScreenTimeoutPreference;
+    private Preference mScreenSaverPreference;
 
     private final Configuration mCurConfig = new Configuration();
     
-    private ListPreference mScreenTimeoutPreference;
-    private Preference mScreenSaverPreference;
+    /* Begin AllianceMOD Customizations */
+
+    private ListPreference mStatusBarBatteryIconPref;
+
+    /* End AllianceMOD Customizations */
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
@@ -116,7 +127,36 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
+        //AllianceMOD Options
+        mStatusBarBatteryIconPref = (ListPreference) findPreference(KEY_STATUSBAR_BATTERYICON);
+        mStatusBarBatteryIconPref.setOnPreferenceChangeListener(this);
+
     }
+
+    /* BEGIN AllianceMOD Customization */
+
+    public void writeBatteryIconPreference(Object objValue) {
+		int val = Integer.parseInt((String) objValue); 
+		Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_ICON, val);
+    }
+
+    public void readBatteryIconPreference(ListPreference pref) {
+	 	mStatusBarBatteryIconPref.setValue((Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_ICON, 0)) + "");
+
+         /*
+        // mark the appropriate item in the preferences list
+        int index = floatToIndex(mCurConfig.fontScale);
+        pref.setValueIndex(index);
+
+        // report the current size in the summary text
+        final Resources res = getResources();
+        String[] fontSizeNames = res.getStringArray(R.array.entries_font_size);
+        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
+                fontSizeNames[index]));
+        */
+    }    
+
+    /* END AllianceMOD Customization */
 
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
@@ -229,6 +269,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         updateAccelerometerRotationCheckbox();
         readFontSizePreference(mFontSizePref);
         updateScreenSaverSummary();
+        
+        /* BEGIN AllianceMOD Customizations */
+        
+        //Battery Icon
+        readBatteryIconPreference(mStatusBarBatteryIconPref);
+        
+        /* END AllianceMOD Customizations */
     }
 
     private void updateScreenSaverSummary() {
@@ -278,8 +325,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist screen timeout setting", e);
             }
         }
+
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
+        }
+
+        if (KEY_STATUSBAR_BATTERYICON.equals(key)) {
+	    	writeBatteryIconPreference(objValue);
         }
 
         return true;

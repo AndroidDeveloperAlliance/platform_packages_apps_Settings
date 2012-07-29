@@ -90,6 +90,8 @@
             </intent-filter>
         </activity>
 
+
+
         <!-- Wireless Controls -->
 
         <activity android:name="Settings$WirelessSettingsActivity"

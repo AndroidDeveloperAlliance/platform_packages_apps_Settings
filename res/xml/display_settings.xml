@@ -58,4 +58,17 @@
             android:title="@string/notification_pulse_title"
             android:persistent="false" />
 
+ 		<PreferenceCategory android:key="adamod_display_preference_category"
+            android:title="@string/adamod_display_preference_category_title">
+            
+		  <ListPreference 
+		       android:key="adamod_statusbar_battery_icon"
+		       android:title="@string/adamod_battery_icon_title"
+		       android:summary="@string/adamod_battery_icon_summary"
+		       android:entries="@array/adamod_battery_icon_entries"
+		       android:entryValues="@array/adamod_battery_icon_entryvalues"
+		       android:dialogTitle="@string/adamod_battery_icon_dialogtitle"
+		  />
+		  
+		</PreferenceCategory>_
 </PreferenceScreen>
