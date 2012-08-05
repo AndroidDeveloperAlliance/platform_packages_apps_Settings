@@ -60,7 +60,17 @@
 
  		<PreferenceCategory android:key="adamod_display_preference_category"
             android:title="@string/adamod_display_preference_category_title">
-            
+
+        <!-- Themes -->
+        <PreferenceScreen
+                android:id="@+id/themes_settings"
+                android:icon="@drawable/ic_settings_themes"
+                android:title="@string/themes_settings">
+                <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.tmobile.themechooser"
+                    android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+
 		  <ListPreference 
 		       android:key="adamod_statusbar_battery_icon"
 		       android:title="@string/adamod_battery_icon_title"
