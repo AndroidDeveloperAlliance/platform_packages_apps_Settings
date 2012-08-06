@@ -95,6 +95,18 @@
         android:title="@string/applications_settings"
         android:id="@+id/application_settings" />
 
+    <!-- Themes -->
+    <header
+        android:id="@+id/themes_settings"
+        android:icon="@drawable/ic_settings_themes"
+        android:title="@string/themes_settings">
+         <intent
+           android:action="android.intent.action.MAIN"
+           android:targetPackage="com.tmobile.themechooser"
+           android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+    </header>
+
+
     <!-- Manufacturer hook -->
     <header
         android:fragment="com.android.settings.WirelessSettings"
