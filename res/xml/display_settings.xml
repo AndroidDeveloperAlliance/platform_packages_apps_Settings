@@ -58,27 +58,42 @@
             android:title="@string/notification_pulse_title"
             android:persistent="false" />
 
- 		<PreferenceCategory android:key="adamod_display_preference_category"
+        <!-- Navigation Bar Customization -->
+        <PreferenceScreen
+            android:key="navigation_bar"
+            android:fragment="com.android.settings.vanir.NavBar"
+            android:title="@string/navigation_bar_title" />
+            
+        <PreferenceCategory
+            android:key="category_wakeup_options"
+            android:title="@string/display_category_wakeup_options_title"/>
+        
+        <CheckBoxPreference
+            android:key="pref_volume_wake"
+            android:title="@string/pref_volume_wake_title"
+            android:summary="@string/pref_volume_wake_summary"
+            android:defaultValue="true" />
+
+	<PreferenceCategory android:key="adamod_display_preference_category"
             android:title="@string/adamod_display_preference_category_title">
 
         <!-- Themes -->
         <PreferenceScreen
-                android:id="@+id/themes_settings"
-                android:icon="@drawable/ic_settings_themes"
-                android:title="@string/themes_settings">
-                <intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.tmobile.themechooser"
-                    android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+            android:id="@+id/themes_settings"
+            android:icon="@drawable/ic_settings_themes"
+            android:title="@string/themes_settings">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.tmobile.themechooser"
+                android:targetClass="com.tmobile.themechooser.ThemeChooser" />
 
-		  <ListPreference 
-		       android:key="adamod_statusbar_battery_icon"
-		       android:title="@string/adamod_battery_icon_title"
-		       android:summary="@string/adamod_battery_icon_summary"
-		       android:entries="@array/adamod_battery_icon_entries"
-		       android:entryValues="@array/adamod_battery_icon_entryvalues"
-		       android:dialogTitle="@string/adamod_battery_icon_dialogtitle"
-		  />
+        <ListPreference 
+	       android:key="adamod_statusbar_battery_icon"
+	       android:title="@string/adamod_battery_icon_title"
+	       android:summary="@string/adamod_battery_icon_summary"
+	       android:entries="@array/adamod_battery_icon_entries"
+	       android:entryValues="@array/adamod_battery_icon_entryvalues"
+	       android:dialogTitle="@string/adamod_battery_icon_dialogtitle" />
 		  
-		</PreferenceCategory>_
+	</PreferenceCategory>_
 </PreferenceScreen>
