@@ -4120,7 +4120,7 @@
     <!--Begin AllianceMOD Customizations-->
     
     <!-- Display -->
-    <string name="adamod_display_preferences_statusbar_category_title">AllianceMOD Status Bar Options</string>
+    <string name="adamod_display_preferences_statusbar_category_title">AllianceMOD Display Options</string>
     
     <!--Battery-->
     <string name="adamod_battery_icon_title">Battery Icon</string>
