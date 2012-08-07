@@ -68,8 +68,8 @@
             android:summary="@string/pref_volume_wake_summary"
             android:defaultValue="true" />
 
-	<PreferenceCategory android:key="adamod_display_preference_category"
-            android:title="@string/adamod_display_preference_category_title">
+	<PreferenceCategory android:key="adamod_display_preferences_statusbar_category"
+            android:title="@string/adamod_display_preferences_statusbar_category_title">
 
         <!-- Navigation Bar Customization -->
         <PreferenceScreen
@@ -84,6 +84,34 @@
 	       android:entries="@array/adamod_battery_icon_entries"
 	       android:entryValues="@array/adamod_battery_icon_entryvalues"
 	       android:dialogTitle="@string/adamod_battery_icon_dialogtitle" />
+	
+		<ListPreference
+	       android:key="adamod_statusbar_clock_position"
+	       android:title="@string/adamod_clock_position_title"
+	       android:summary="@string/adamod_clock_position_summary"
+	       android:entries="@array/adamod_clock_position_entries"
+	       android:entryValues="@array/adamod_clock_position_entryvalues"
+	       android:dialogTitle="@string/adamod_clock_position_dialogtitle"
+		/>
+			
+		<ListPreference 
+	      android:key="adamod_statusbar_clock_ampm"
+	      android:title="@string/adamod_clock_ampm_title"
+	      android:summary="@string/adamod_clock_ampm_summary"
+	      android:entries="@array/adamod_clock_ampm_entries"
+	      android:entryValues="@array/adamod_clock_ampm_entryvalues"
+	      android:dialogTitle="@string/adamod_clock_ampm_dialogtitle"
+		/>
+			
+			
+		<ListPreference 
+	      android:key="adamod_statusbar_clock_weekday"
+	      android:title="@string/adamod_clock_weekday_title"
+	      android:summary="@string/adamod_clock_weekday_summary"
+	      android:entries="@array/adamod_clock_weekday_entries"
+	      android:entryValues="@array/adamod_clock_weekday_entryvalues"
+	      android:dialogTitle="@string/adamod_clock_weekday_dialogtitle"
+		/>
 		  
 	</PreferenceCategory>
 </PreferenceScreen>

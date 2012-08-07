@@ -55,6 +55,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     /* Begin AllianceMOD Customizations */
 
     private static final String KEY_STATUSBAR_BATTERYICON = "adamod_statusbar_battery_icon";
+    private static final String KEY_STATUSBAR_CLOCKPOSITION = "adamod_statusbar_clock_position";
+    private static final String KEY_STATUSBAR_CLOCKAMPM = "adamod_statusbar_clock_ampm";
+    private static final String KEY_STATUSBAR_CLOCKWEEKDAY = "adamod_statusbar_clock_weekday";
 
     /* End AllianceMOD Customizations */
 
@@ -69,6 +72,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     /* Begin AllianceMOD Customizations */
 
     private ListPreference mStatusBarBatteryIconPref;
+    private ListPreference mStatusBarClockPositionPref;
+    private ListPreference mStatusBarClockAMPMPref;
+    private ListPreference mStatusBarClockWeekdayPref;
 
     /* End AllianceMOD Customizations */
 
@@ -127,36 +133,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
-        //AllianceMOD Options
-        mStatusBarBatteryIconPref = (ListPreference) findPreference(KEY_STATUSBAR_BATTERYICON);
-        mStatusBarBatteryIconPref.setOnPreferenceChangeListener(this);
-
+        /* BEGIN AllianceMOD Customization */
+        
+        initCustomizationPreferenceWidgets();
+        
+		/* END AllianceMOD Customization */
     }
-
-    /* BEGIN AllianceMOD Customization */
-
-    public void writeBatteryIconPreference(Object objValue) {
-		int val = Integer.parseInt((String) objValue); 
-		Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_ICON, val);
-    }
-
-    public void readBatteryIconPreference(ListPreference pref) {
-	 	mStatusBarBatteryIconPref.setValue((Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_BATTERY_ICON, 0)) + "");
-
-         /*
-        // mark the appropriate item in the preferences list
-        int index = floatToIndex(mCurConfig.fontScale);
-        pref.setValueIndex(index);
-
-        // report the current size in the summary text
-        final Resources res = getResources();
-        String[] fontSizeNames = res.getStringArray(R.array.entries_font_size);
-        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
-                fontSizeNames[index]));
-        */
-    }    
-
-    /* END AllianceMOD Customization */
 
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
@@ -272,8 +254,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         
         /* BEGIN AllianceMOD Customizations */
         
-        //Battery Icon
-        readBatteryIconPreference(mStatusBarBatteryIconPref);
+        readCustomizationSettings();
         
         /* END AllianceMOD Customizations */
     }
@@ -325,15 +306,72 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist screen timeout setting", e);
             }
         }
-
-        if (KEY_FONT_SIZE.equals(key)) {
+        else if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
         }
-
-        if (KEY_STATUSBAR_BATTERYICON.equals(key)) {
-	    	writeBatteryIconPreference(objValue);
+        else {
+        	saveCustomizationSetting(key, objValue);
         }
 
         return true;
     }
+    
+    /* BEGIN AllianceMOD Customization */
+
+    public void initCustomizationPreferenceWidgets() {
+        //Status Bar Battery Icon
+        mStatusBarBatteryIconPref = (ListPreference) findPreference(KEY_STATUSBAR_BATTERYICON);
+        mStatusBarBatteryIconPref.setOnPreferenceChangeListener(this);
+        
+        //Status Bar Clock Position
+        mStatusBarClockPositionPref = (ListPreference) findPreference(KEY_STATUSBAR_CLOCKPOSITION);
+        mStatusBarClockPositionPref.setOnPreferenceChangeListener(this);
+        
+        mStatusBarClockAMPMPref = (ListPreference) findPreference(KEY_STATUSBAR_CLOCKAMPM);
+        mStatusBarClockAMPMPref.setOnPreferenceChangeListener(this);
+        
+        mStatusBarClockWeekdayPref = (ListPreference) findPreference(KEY_STATUSBAR_CLOCKWEEKDAY);
+        mStatusBarClockWeekdayPref.setOnPreferenceChangeListener(this);
+    }
+    
+    public void readCustomizationSettings() {
+    	readListPreferenceValue(mStatusBarBatteryIconPref, Settings.System.STATUSBAR_BATTERY_ICON, 0);
+    	readListPreferenceValue(mStatusBarClockPositionPref, Settings.System.STATUSBAR_CLOCK_STYLE, 1);
+    	readListPreferenceValue(mStatusBarClockAMPMPref, Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, 2);
+    	readListPreferenceValue(mStatusBarClockWeekdayPref, Settings.System.STATUSBAR_CLOCK_WEEKDAY, 0);
+    }
+    
+    public void saveCustomizationSetting(String key, Object objValue) {
+    	//save appropriate key's value.
+    	if (KEY_STATUSBAR_BATTERYICON.equals(key)) {
+    		int val = Integer.parseInt((String) objValue); 
+    		saveListPreferenceValue(Settings.System.STATUSBAR_BATTERY_ICON, val);
+    	}
+    	else if (KEY_STATUSBAR_CLOCKPOSITION.equals(key)) {
+    		int val = Integer.parseInt((String) objValue); 
+    		saveListPreferenceValue(Settings.System.STATUSBAR_CLOCK_STYLE, val);
+    	}
+    	else if (KEY_STATUSBAR_CLOCKAMPM.equals(key)) {
+    		int val = Integer.parseInt((String) objValue); 
+    		saveListPreferenceValue(Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, val);
+    	}
+    	else if (KEY_STATUSBAR_CLOCKWEEKDAY.equals(key)) {
+    		int val = Integer.parseInt((String) objValue); 
+    		saveListPreferenceValue(Settings.System.STATUSBAR_CLOCK_WEEKDAY, val);
+    	}
+    }
+    
+    public void readListPreferenceValue(ListPreference pref, String settingKey, int defaultValue) {
+		int valueIndex = Settings.System.getInt(getActivity().getContentResolver(), settingKey, defaultValue);
+		String value = (valueIndex) + "";
+		Log.w(TAG, "Reading Preference: " + settingKey + ". Value = " + value + ". Setting Control: " + pref.getKey());
+	 	pref.setValue(value);
+    }
+    
+    public void saveListPreferenceValue(String key, int value) {
+    	Log.w(TAG, "Saving Preference: " + key + " Value: " + value);
+    	Settings.System.putInt(getActivity().getContentResolver(), key, value);
+    }
+    
+    /* END AllianceMOD Customization */
 }

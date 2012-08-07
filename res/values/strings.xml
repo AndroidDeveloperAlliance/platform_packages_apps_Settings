@@ -4116,12 +4116,31 @@
     <string name="cell_broadcast_settings">Cell broadcasts</string>
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
-
-    <!--Begin AllianceMOD Strings-->
-    <string name="adamod_display_preference_category_title">AllianceMOD Display Customizations</string>
+    
+    <!--Begin AllianceMOD Customizations-->
+    
+    <!-- Display -->
+    <string name="adamod_display_preferences_statusbar_category_title">AllianceMOD Status Bar Options</string>
+    
+    <!--Battery-->
     <string name="adamod_battery_icon_title">Battery Icon</string>
-    <string name="adamod_battery_icon_summary">Appearance of battery icon in the status bar.</string>
+    <string name="adamod_battery_icon_summary">Customize the battery icon.</string>
     <string name="adamod_battery_icon_dialogtitle">Status Bar Battery Indicator</string>
+    
+    <!--Clock-->
+    <string name="adamod_clock_position_title">Clock: Position</string>
+    <string name="adamod_clock_position_summary">Customize the position of the clock.</string>
+    <string name="adamod_clock_position_dialogtitle">Status Bar Clock Position</string>
+    
+    <string name="adamod_clock_ampm_title">Clock: AM/PM</string>
+    <string name="adamod_clock_ampm_summary">Show AM/PM on clock.</string>
+    <string name="adamod_clock_ampm_dialogtitle">Status Bar Clock Position</string>
+    
+    
+    <string name="adamod_clock_weekday_title">Clock: Weekday</string>
+    <string name="adamod_clock_weekday_summary">Optionally add the day of the week to clock.</string>
+    <string name="adamod_clock_weekday_dialogtitle">Status Bar Clock Weekday Display</string>
+    
     <string name="themes_settings">Themes</string>
     
     <!-- Sound settings screen -->

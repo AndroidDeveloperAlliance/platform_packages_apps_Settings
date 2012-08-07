@@ -748,5 +748,40 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string-array name="adamod_clock_position_entries">
+		<item>Right</item>
+		<item>Center</item>
+		<item>None</item>
+	</string-array>
+    
+    <string-array name="adamod_clock_position_entryvalues">
+		<item>1</item>
+		<item>2</item>
+		<item>0</item>
+	</string-array>
+	
+	<string-array name="adamod_clock_ampm_entries">
+		<item>Don\'t Show</item>
+		<item>Small AM/PM</item>
+		<item>Large AM/PM</item>
+	</string-array>
+
+	<string-array name="adamod_clock_ampm_entryvalues">
+		<item>2</item>
+		<item>1</item>
+		<item>0</item>
+	</string-array>
+
+	<string-array name="adamod_clock_weekday_entries">
+		<item>Hide</item>
+		<item>Small</item>
+		<item>Regular</item>
+	</string-array>
+
+	<string-array name="adamod_clock_weekday_entryvalues">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+	</string-array>    
     <!--End AllianceMod Arrays--> 
 </resources>
