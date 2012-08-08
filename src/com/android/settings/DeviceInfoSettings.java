@@ -226,7 +226,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
             return procVersionStr;
 
         } catch (IOException e) {
-            Log.e(TAG,
+            Log.e(LOG_TAG,
                 "IO Exception when getting kernel version for Device Info screen",
                 e);
 
