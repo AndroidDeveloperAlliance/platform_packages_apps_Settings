@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cyanogenmod;
+package com.android.settings.ada;
 
 import android.content.ContentResolver;
 import android.content.res.Configuration;

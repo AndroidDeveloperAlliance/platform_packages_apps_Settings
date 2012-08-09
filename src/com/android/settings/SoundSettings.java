@@ -61,7 +61,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_LOCK_SOUNDS = "lock_sounds";
     private static final String KEY_RINGTONE = "ringtone";
     private static final String KEY_NOTIFICATION_SOUND = "notification_sound";
-    private static final String KEY_CATEGORY_CALLS = "category_calls_and_notification";
     private static final String KEY_CATEGORY_CALLS = "category_calls";
     private static final String KEY_QUIET_HOURS = "quiet_hours";
 
@@ -130,9 +129,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVibrateWhenRinging.setChecked(Settings.System.getInt(resolver,
                 Settings.System.VIBRATE_WHEN_RINGING, 0) != 0);
         mQuietHours = (PreferenceScreen) findPreference(KEY_QUIET_HOURS);
-
-        mVibrateOnRing = (CheckBoxPreference) findPreference(KEY_VIBRATE);
-        mVibrateOnRing.setOnPreferenceChangeListener(this);
 
         mDtmfTone = (CheckBoxPreference) findPreference(KEY_DTMF_TONE);
         mDtmfTone.setPersistent(false);
