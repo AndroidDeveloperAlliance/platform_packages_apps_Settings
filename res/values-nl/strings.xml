@@ -1699,4 +1699,32 @@
     <string name="help_label" msgid="1107174367904110532">"Help"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Cell broadcasts"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Selecteer de typen noodoproepen die moeten worden weergegeven."</string>
+
+    <!-- Profiles -->
+    <string name="profiles_settings_title">Profielen</string>
+
+    <!-- Profiles - Quiet hours -->
+    <string name="quiet_hours_title">Stille uren</string>
+    <string name="quiet_hours_summary">Toon/verander uren wanneer apparaat stil moet zijn</string>
+    <string name="quiet_hours_note_title">Opmerking</string>
+    <string name="quiet_hours_note_summary">Inkomende oproepen zullen normaal functioneren tijdens stille uren</string>
+    <string name="quiet_hours_enabled">Schakel stille uren in</string>
+    <string name="quiet_hours_enabled_on">Stille uren worden geforceerd</string>
+    <string name="quiet_hours_enabled_off">Notificaties zullen normaal functioneren</string>
+    <string name="quiet_hours_start">Begin stille uren</string>
+    <string name="quiet_hours_start_summary">Wanneer beginnen met het forceren van stille uren</string>
+    <string name="quiet_hours_end">Einde stille uren</string>
+    <string name="quiet_hours_end_summary">Wanneer stoppen met het forceren van stille uren</string>
+    <string name="quiet_hours_mute">Demp notificaties</string>
+    <string name="quiet_hours_mute_on">Er zullen geen geluiden worden afgespeeld</string>
+    <string name="quiet_hours_mute_off">Geluiden zullen normaal worden afgespeeld</string>
+    <string name="quiet_hours_still">Schakel trillen uit</string>
+    <string name="quiet_hours_still_on">Apparaat zal niet trillen</string>
+    <string name="quiet_hours_still_off">Apparaat zal normaal trillen</string>
+    <string name="quiet_hours_dim">Schakel notificatie-LED uit</string>
+    <string name="quiet_hours_dim_on">Notificatie-LED zal worden uitgeschakeld</string>
+    <string name="quiet_hours_dim_off">Notificatie-LED zal normaal functioneren</string>
+    <string name="quiet_hours_haptic">Schakel haptische feedback uit</string>
+    <string name="quiet_hours_haptic_on">Haptische feedback zal worden uitgeschakeld</string>
+    <string name="quiet_hours_haptic_off">Haptische feedback zal normaal functioneren</string>
 </resources>

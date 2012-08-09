@@ -35,5 +35,5 @@
             android:persistent="false"
             android:title="@string/screensaver_activate_on_dock_title"
             android:defaultValue="true" />
-
+            
 </PreferenceScreen>
