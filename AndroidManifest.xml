@@ -114,6 +114,8 @@
 
         <!-- Top-level settings -->
 
+        <activity android:name=".ada.PowerWidget" />
+
         <activity android:name="Settings$WifiSettingsActivity"
                 android:label="@string/wifi_settings"
                 android:configChanges="orientation|keyboardHidden|screenSize"

@@ -71,6 +71,11 @@
 	<PreferenceCategory android:key="adamod_display_preferences_statusbar_category"
             android:title="@string/adamod_display_preferences_statusbar_category_title">
 
+        <PreferenceScreen
+            android:key="notification_drawer"
+            android:fragment="com.android.settings.ada.PowerWidget"
+            android:title="@string/notification_drawer_title" />
+
         <!-- Navigation Bar Customization -->
         <PreferenceScreen
             android:key="navigation_bar"
