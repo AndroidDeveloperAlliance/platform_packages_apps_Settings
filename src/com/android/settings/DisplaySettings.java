@@ -32,6 +32,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.os.SystemProperties;
 import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
@@ -58,6 +59,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_STATUSBAR_CLOCKPOSITION = "adamod_statusbar_clock_position";
     private static final String KEY_STATUSBAR_CLOCKAMPM = "adamod_statusbar_clock_ampm";
     private static final String KEY_STATUSBAR_CLOCKWEEKDAY = "adamod_statusbar_clock_weekday";
+    private static final String DISABLE_BOOTANIMATION_PREF = "disable_bootanimation";
+    private static final String DISABLE_BOOTANIMATION_PERSIST_PROP = "persist.sys.boot_enabled";
+    private static final String DISABLE_BOOTANIMATION_DEFAULT = "1";
 
     /* End AllianceMOD Customizations */
 
@@ -66,6 +70,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mNotificationPulse;
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
+    CheckBoxPreference mDisableBootAnimation;
 
     private final Configuration mCurConfig = new Configuration();
     
@@ -95,6 +100,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
+
+        mDisableBootAnimation = (CheckBoxPreference) findPreference(DISABLE_BOOTANIMATION_PREF);
+        String disableBootanimation = SystemProperties.get(DISABLE_BOOTANIMATION_PERSIST_PROP, DISABLE_BOOTANIMATION_DEFAULT);
+        mDisableBootAnimation.setChecked("0".equals(disableBootanimation));
+
         if (RotationPolicy.isRotationLockToggleSupported(getActivity())) {
             // If rotation lock is supported, then we do not provide this option in
             // Display settings.  However, is still available in Accessibility settings.
@@ -283,7 +293,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mAccelerometer) {
+        if (preference == mDisableBootAnimation) {
+	    SystemProperties.set(DISABLE_BOOTANIMATION_PERSIST_PROP,
+                        mDisableBootAnimation.isChecked() ? "0" : "1");
+	    return true;
+        } else if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(
                     getActivity(), !mAccelerometer.isChecked());
         } else if (preference == mNotificationPulse) {

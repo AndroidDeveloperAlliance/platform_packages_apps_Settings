@@ -61,7 +61,12 @@
         <PreferenceCategory
             android:key="category_wakeup_options"
             android:title="@string/display_category_wakeup_options_title"/>
-        
+
+        <CheckBoxPreference
+            android:key="disable_bootanimation"
+            android:title="@string/disable_bootanimation_title"
+            android:summary="@string/disable_bootanimation_summary" />
+
         <CheckBoxPreference
             android:key="pref_volume_wake"
             android:title="@string/pref_volume_wake_title"

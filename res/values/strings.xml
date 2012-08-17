@@ -4277,5 +4277,8 @@
     <string name="cm_sound_mode_soundVibrate">Sound + Vibrate</string>
     <string name="pref_flash_mode_title">Flash mode</string>
     <string name="expanded_haptic_feedback_title">Haptic feedback</string>
+
+    <string name="disable_bootanimation_title">Boot Animation</string>
+    <string name="disable_bootanimation_summary">Disable boot animation for faster boot</string>
    <!--End AllianceMOD Strings-->
 </resources>
