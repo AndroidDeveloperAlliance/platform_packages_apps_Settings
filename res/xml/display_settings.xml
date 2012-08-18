@@ -58,23 +58,13 @@
             android:title="@string/notification_pulse_title"
             android:persistent="false" />
 
-        <PreferenceCategory
-            android:key="category_wakeup_options"
-            android:title="@string/display_category_wakeup_options_title"/>
+	<PreferenceCategory android:key="adamod_display_preferences_statusbar_category"
+            android:title="@string/adamod_display_preferences_statusbar_category_title">
 
         <CheckBoxPreference
             android:key="disable_bootanimation"
             android:title="@string/disable_bootanimation_title"
             android:summary="@string/disable_bootanimation_summary" />
-
-        <CheckBoxPreference
-            android:key="pref_volume_wake"
-            android:title="@string/pref_volume_wake_title"
-            android:summary="@string/pref_volume_wake_summary"
-            android:defaultValue="true" />
-
-	<PreferenceCategory android:key="adamod_display_preferences_statusbar_category"
-            android:title="@string/adamod_display_preferences_statusbar_category_title">
 
         <PreferenceScreen
             android:key="notification_drawer"
@@ -87,41 +77,10 @@
             android:fragment="com.android.settings.vanir.NavBar"
             android:title="@string/navigation_bar_title" />
 
-        <ListPreference 
-	       android:key="adamod_statusbar_battery_icon"
-	       android:title="@string/adamod_battery_icon_title"
-	       android:summary="@string/adamod_battery_icon_summary"
-	       android:entries="@array/adamod_battery_icon_entries"
-	       android:entryValues="@array/adamod_battery_icon_entryvalues"
-	       android:dialogTitle="@string/adamod_battery_icon_dialogtitle" />
-	
-		<ListPreference
-	       android:key="adamod_statusbar_clock_position"
-	       android:title="@string/adamod_clock_position_title"
-	       android:summary="@string/adamod_clock_position_summary"
-	       android:entries="@array/adamod_clock_position_entries"
-	       android:entryValues="@array/adamod_clock_position_entryvalues"
-	       android:dialogTitle="@string/adamod_clock_position_dialogtitle"
-		/>
-			
-		<ListPreference 
-	      android:key="adamod_statusbar_clock_ampm"
-	      android:title="@string/adamod_clock_ampm_title"
-	      android:summary="@string/adamod_clock_ampm_summary"
-	      android:entries="@array/adamod_clock_ampm_entries"
-	      android:entryValues="@array/adamod_clock_ampm_entryvalues"
-	      android:dialogTitle="@string/adamod_clock_ampm_dialogtitle"
-		/>
-			
-			
-		<ListPreference 
-	      android:key="adamod_statusbar_clock_weekday"
-	      android:title="@string/adamod_clock_weekday_title"
-	      android:summary="@string/adamod_clock_weekday_summary"
-	      android:entries="@array/adamod_clock_weekday_entries"
-	      android:entryValues="@array/adamod_clock_weekday_entryvalues"
-	      android:dialogTitle="@string/adamod_clock_weekday_dialogtitle"
-		/>
+        <PreferenceScreen
+        android:key="@+id/status_bar"
+        android:title="@string/status_bar_title"
+        android:fragment="com.android.settings.ada.StatusBarSettings" />
 		  
 	</PreferenceCategory>
 </PreferenceScreen>

@@ -1382,6 +1382,14 @@
                 android:resource="@id/battery_settings" />
         </activity>
 
+        <activity android:name=".ada.StatusBarSettings"
+            android:label="StatusBar Settings" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".fuelgauge.PowerUsageSummary"
                 android:label="@string/power_usage_summary_title"

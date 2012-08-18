@@ -32,7 +32,6 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
-import android.os.SystemProperties;
 import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
@@ -53,35 +52,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
 
-    /* Begin AllianceMOD Customizations */
-
-    private static final String KEY_STATUSBAR_BATTERYICON = "adamod_statusbar_battery_icon";
-    private static final String KEY_STATUSBAR_CLOCKPOSITION = "adamod_statusbar_clock_position";
-    private static final String KEY_STATUSBAR_CLOCKAMPM = "adamod_statusbar_clock_ampm";
-    private static final String KEY_STATUSBAR_CLOCKWEEKDAY = "adamod_statusbar_clock_weekday";
-    private static final String DISABLE_BOOTANIMATION_PREF = "disable_bootanimation";
-    private static final String DISABLE_BOOTANIMATION_PERSIST_PROP = "persist.sys.boot_enabled";
-    private static final String DISABLE_BOOTANIMATION_DEFAULT = "1";
-
-    /* End AllianceMOD Customizations */
-
     private CheckBoxPreference mAccelerometer;
     private ListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
-    private ListPreference mScreenTimeoutPreference;
-    private Preference mScreenSaverPreference;
-    CheckBoxPreference mDisableBootAnimation;
 
     private final Configuration mCurConfig = new Configuration();
     
-    /* Begin AllianceMOD Customizations */
-
-    private ListPreference mStatusBarBatteryIconPref;
-    private ListPreference mStatusBarClockPositionPref;
-    private ListPreference mStatusBarClockAMPMPref;
-    private ListPreference mStatusBarClockWeekdayPref;
-
-    /* End AllianceMOD Customizations */
+    private ListPreference mScreenTimeoutPreference;
+    private Preference mScreenSaverPreference;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
@@ -100,11 +78,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
-
-        mDisableBootAnimation = (CheckBoxPreference) findPreference(DISABLE_BOOTANIMATION_PREF);
-        String disableBootanimation = SystemProperties.get(DISABLE_BOOTANIMATION_PERSIST_PROP, DISABLE_BOOTANIMATION_DEFAULT);
-        mDisableBootAnimation.setChecked("0".equals(disableBootanimation));
-
         if (RotationPolicy.isRotationLockToggleSupported(getActivity())) {
             // If rotation lock is supported, then we do not provide this option in
             // Display settings.  However, is still available in Accessibility settings.
@@ -143,11 +116,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
-        /* BEGIN AllianceMOD Customization */
-        
-        initCustomizationPreferenceWidgets();
-        
-		/* END AllianceMOD Customization */
     }
 
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
@@ -261,12 +229,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         updateAccelerometerRotationCheckbox();
         readFontSizePreference(mFontSizePref);
         updateScreenSaverSummary();
-        
-        /* BEGIN AllianceMOD Customizations */
-        
-        readCustomizationSettings();
-        
-        /* END AllianceMOD Customizations */
     }
 
     private void updateScreenSaverSummary() {
@@ -293,11 +255,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mDisableBootAnimation) {
-	    SystemProperties.set(DISABLE_BOOTANIMATION_PERSIST_PROP,
-                        mDisableBootAnimation.isChecked() ? "0" : "1");
-	    return true;
-        } else if (preference == mAccelerometer) {
+        if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(
                     getActivity(), !mAccelerometer.isChecked());
         } else if (preference == mNotificationPulse) {
@@ -320,72 +278,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist screen timeout setting", e);
             }
         }
-        else if (KEY_FONT_SIZE.equals(key)) {
+        if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
-        }
-        else {
-        	saveCustomizationSetting(key, objValue);
         }
 
         return true;
     }
-    
-    /* BEGIN AllianceMOD Customization */
-
-    public void initCustomizationPreferenceWidgets() {
-        //Status Bar Battery Icon
-        mStatusBarBatteryIconPref = (ListPreference) findPreference(KEY_STATUSBAR_BATTERYICON);
-        mStatusBarBatteryIconPref.setOnPreferenceChangeListener(this);
-        
-        //Status Bar Clock Position
-        mStatusBarClockPositionPref = (ListPreference) findPreference(KEY_STATUSBAR_CLOCKPOSITION);
-        mStatusBarClockPositionPref.setOnPreferenceChangeListener(this);
-        
-        mStatusBarClockAMPMPref = (ListPreference) findPreference(KEY_STATUSBAR_CLOCKAMPM);
-        mStatusBarClockAMPMPref.setOnPreferenceChangeListener(this);
-        
-        mStatusBarClockWeekdayPref = (ListPreference) findPreference(KEY_STATUSBAR_CLOCKWEEKDAY);
-        mStatusBarClockWeekdayPref.setOnPreferenceChangeListener(this);
-    }
-    
-    public void readCustomizationSettings() {
-    	readListPreferenceValue(mStatusBarBatteryIconPref, Settings.System.STATUSBAR_BATTERY_ICON, 0);
-    	readListPreferenceValue(mStatusBarClockPositionPref, Settings.System.STATUSBAR_CLOCK_STYLE, 1);
-    	readListPreferenceValue(mStatusBarClockAMPMPref, Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, 2);
-    	readListPreferenceValue(mStatusBarClockWeekdayPref, Settings.System.STATUSBAR_CLOCK_WEEKDAY, 0);
-    }
-    
-    public void saveCustomizationSetting(String key, Object objValue) {
-    	//save appropriate key's value.
-    	if (KEY_STATUSBAR_BATTERYICON.equals(key)) {
-    		int val = Integer.parseInt((String) objValue); 
-    		saveListPreferenceValue(Settings.System.STATUSBAR_BATTERY_ICON, val);
-    	}
-    	else if (KEY_STATUSBAR_CLOCKPOSITION.equals(key)) {
-    		int val = Integer.parseInt((String) objValue); 
-    		saveListPreferenceValue(Settings.System.STATUSBAR_CLOCK_STYLE, val);
-    	}
-    	else if (KEY_STATUSBAR_CLOCKAMPM.equals(key)) {
-    		int val = Integer.parseInt((String) objValue); 
-    		saveListPreferenceValue(Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, val);
-    	}
-    	else if (KEY_STATUSBAR_CLOCKWEEKDAY.equals(key)) {
-    		int val = Integer.parseInt((String) objValue); 
-    		saveListPreferenceValue(Settings.System.STATUSBAR_CLOCK_WEEKDAY, val);
-    	}
-    }
-    
-    public void readListPreferenceValue(ListPreference pref, String settingKey, int defaultValue) {
-		int valueIndex = Settings.System.getInt(getActivity().getContentResolver(), settingKey, defaultValue);
-		String value = (valueIndex) + "";
-		Log.w(TAG, "Reading Preference: " + settingKey + ". Value = " + value + ". Setting Control: " + pref.getKey());
-	 	pref.setValue(value);
-    }
-    
-    public void saveListPreferenceValue(String key, int value) {
-    	Log.w(TAG, "Saving Preference: " + key + " Value: " + value);
-    	Settings.System.putInt(getActivity().getContentResolver(), key, value);
-    }
-    
-    /* END AllianceMOD Customization */
 }
