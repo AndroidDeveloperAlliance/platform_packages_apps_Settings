@@ -32,6 +32,11 @@
             android:title="@string/owner_info_settings_title"
             android:summary="@string/owner_info_settings_summary"/>
 
+         <PreferenceScreen
+            android:key="adalockscreen"
+            android:fragment="com.android.settings.ada.LockscreenInterface"
+            android:title="@string/lockscreen_display_settings_title" />
+        
     </PreferenceCategory>
 
 </PreferenceScreen>
