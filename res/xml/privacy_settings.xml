@@ -19,6 +19,12 @@
 
     <PreferenceCategory android:key="backup_category"
             android:title="@string/backup_section_title">
+
+         <PreferenceScreen
+            android:key="@+id/backup_restore"
+            android:title="@string/backup_restore_title"
+            android:fragment="com.android.settings.ada.BackupRestore" />
+
         <!-- Backup settings -->
         <CheckBoxPreference
                 android:key="backup_data"
