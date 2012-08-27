@@ -1810,7 +1810,7 @@
     <!-- About phone screen,  setting option name-->
     <string name="build_number">Build number</string>
     <!-- About phone screen, ModVersion-->
-    <string name="mod_version">AllianceMOD version</string>
+    <string name="mod_version">AffinitySeries version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, Build Date-->
     <string name="build_date">Build date</string>
@@ -4150,10 +4150,10 @@
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
     
-    <!--Begin AllianceMOD Customizations-->
+    <!--Begin AffinitySeries Customizations-->
     
     <!-- Display -->
-    <string name="adamod_display_preferences_statusbar_category_title">AllianceMOD Display Options</string>
+    <string name="adamod_display_preferences_statusbar_category_title">AffinitySeries Display Options</string>
     
     <!--Battery-->
     <string name="adamod_battery_icon_title">Battery Icon</string>
@@ -4209,10 +4209,10 @@
 
     <!-- Anonymous Statistics #ADA -->
     <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">Alliance statistics</string>
+    <string name="anonymous_statistics_title">AffinitySeries statistics</string>
     <string name="anonymous_statistics_summary">Help make ADA better by opting into anonymous statistics reporting</string>
     <string name="anonymous_statistics_warning_title">About</string>
-    <string name="anonymous_statistics_warning">Opting into Alliance Statistics will allow non-personal data to be submitted to the developers of Alliance to track unique installations across devices. The information submitted includes an unique identifier, which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
+    <string name="anonymous_statistics_warning">Opting into AffinitySeries Statistics will allow non-personal data to be submitted to the developers of AffinitySeries to track unique installations across devices. The information submitted includes an unique identifier, which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
     <string name="enable_reporting_title">Enable reporting</string>
     <string name="preview_data_title">Preview data</string>
     <string name="preview_data_summary">%s</string>
@@ -4220,7 +4220,7 @@
     <string name="anonymous_learn_more">Learn more</string>
 
     <!-- Anonymous Statistics - Notification -->
-    <string name="anonymous_notification_desc">Enable or Disable Alliance Statistics</string>
+    <string name="anonymous_notification_desc">Enable or Disable AffinitySeries Statistics</string>
 
     <!-- Anonymous Statistics - Preview -->
     <string name="preview_id_title">Unique ID</string>
@@ -4294,7 +4294,7 @@
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
-    <string name="lockscreen_display_settings_title">AllianceMOD Lockscreen Customizations</string>
+    <string name="lockscreen_display_settings_title">AffinitySeries Lockscreen Mods</string>
     
     <!-- Lock screen shortcuts -->
     <string name="picker_activities">Activities</string>
@@ -4436,15 +4436,15 @@
 
     <!-- Backup Restore -->
     <string name="backup_restore_title">Backup Restore</string>
-    <string name="backup_string">Alliance Backup/Restore</string>
+    <string name="backup_string">Affinity Backup/Restore</string>
     <string name="backup_alert_title">Filename</string>
     <string name="backup_alert_message">Name your settings file</string>
     <string name="backup_category_title">Backup</string>
     <string name="restore_category_title">Restore</string>
     <string name="theme_category_title">Theme</string>
-    <string name="backup_title">Backup Alliance Settings</string>
+    <string name="backup_title">Backup Affinity Settings</string>
     <string name="backup_summary">save your settings</string>
-    <string name="restore_title">Restore Allaince Settings</string>
+    <string name="restore_title">Restore Affinity Settings</string>
     <string name="restore_summary">apply your backup</string>
     <string name="name_theme_title">Name your theme!</string>
     <string name="positive_button">Make Theme</string>
@@ -4463,5 +4463,5 @@
     <string name="theme_title_hint">Name your theme.</string>
     <string name="theme_summary_hint">Give description</string>
 
-   <!--End AllianceMOD Strings-->
+   <!--End AffinitySeries Strings-->
 </resources>
