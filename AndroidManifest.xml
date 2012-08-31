@@ -1481,6 +1481,8 @@
        <activity android:name=".ada.LockscreenInterface" />
        <activity android:name=".ada.Weather" />
        <activity android:name=".ada.Calendar" />
+       <activity android:name=".ada.NavBar" />
+       <activity android:name=".ada.NavBar2" />
 	<!-- ADA Activities End -->
 	
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
