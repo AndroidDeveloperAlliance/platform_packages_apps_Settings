@@ -4191,16 +4191,25 @@
     <!-- Navigation Bar Customization -->
     <string name="ok">Ok</string>
     <string name="profile_reset_title">Reset</string>
-     <string name="navigation_bar_title">Navigation bar</string>
+    <string name="navigation_bar_title">Navbar Buttons</string>
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
     <string name="navigation_bar_tips">&#8226; Actions can only be assigned to one button at a time\n\n&#8226; The home button cannot be re-assigned\n\n&#8226; Side buttons cannot be rearranged</string>
     <string name="navigation_bar_tips_title">Quick tips</string>
     <string name="navigation_bar_reset_message">Delete current settings and restore to default?</string>
     <string name="navigation_bar_save_message">Navigation bar settings saved</string>
     <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
+    <string name="navigation_bar_tint_title">Navigation bar color</string>
+    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
+    <string name="glow_times_superquick">Super quick</string>
+    <string name="glow_times_quick">Quick</string>
+    <string name="glow_times_normal">Normal</string>
+    <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
+    <string name="glow_times_off">Off</string>
+    <string name="glow_times_title">Button glow animation</string>
+    <string name="button_transparency_title">Nav button transparency</string>
 
     <!-- Navigation Height/Width Settings -->
-    <string name="navbar_header">NavBar Size</string>
+    <string name="navbar_header">Navigation Bar</string>
     <string name="navbar_header_summary">Height/Width</string>
     <string name="navbar_enable_bar">Enable bar</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
@@ -4448,6 +4457,16 @@
     <string name="open_prompt">Open?</string>
     <string name="no_filename_save_error">No filename detected ...Please enter a filename to save</string>
     <string name="location_tracker">Location: %s</string>
+
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#FF000000</string>
+    <string name="set">Set</string>
+    <string name="ics_color">!!!</string>
 
     <!-- Backup Restore -->
     <string name="backup_restore_title">Backup Restore</string>
